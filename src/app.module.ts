@@ -11,14 +11,14 @@ import { DatabaseModule } from './database/database.module';
   imports: [
     PostsModule,
     ConfigModule.forRoot({
-      // validationSchema: Joi.object({
-      //   POSTGRES_HOST: Joi.string(),
-      //   POSTGRES_PORT: Joi.number(),
-      //   POSTGRES_USER: Joi.string(),
-      //   POSTGRES_PASSWORD: Joi.string(),
-      //   POSTGRES_DB: Joi.string(),
-      //   PORT: Joi.number(),
-      // })
+      validationSchema: Joi.object({
+        POSTGRES_HOST: Joi.string(),
+        POSTGRES_PORT: Joi.number(),
+        POSTGRES_USER: Joi.string(),
+        POSTGRES_PASSWORD: Joi.string(),
+        POSTGRES_DB: Joi.string(),
+        PORT: Joi.number(),
+      })
     }),
     DatabaseModule,
   ],
