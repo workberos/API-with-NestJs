@@ -1,7 +1,8 @@
-import { Body, Controller, Delete, Get, Head, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import PostsService from './posts.service';
 import CreatePostDto from './dto/createPost.dto';
 import UpdatePostDto from './dto/updatePost.dto';
+import JwtAuthenticationGuard from 'src/authentication/jwt-authentication.guard';
 
 @Controller('posts')
 export default class PostsController {
@@ -20,6 +21,8 @@ export default class PostsController {
   }
 
   @Post()
+  // Yêu cầu xác thực người dùng khi gọi phương thức
+  @UseGuards(JwtAuthenticationGuard)
   async createPost(@Body() post: CreatePostDto) {
     return this.postsService.createPost(post);
   }
