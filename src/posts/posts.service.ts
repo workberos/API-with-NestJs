@@ -4,6 +4,7 @@ import Post from './post.entity';
 import UpdatePostDto from './dto/updatePost.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { PostNotPoundException } from './exception/postNotFund.exception';
 
 
 @Injectable()
@@ -27,7 +28,7 @@ export default class PostsService {
     const post = await this.postsRepository.findOne(filterCondition);
     
     if (post) return post;
-    throw new NotFoundException('Post not found');
+    throw new NotFoundException();
   }
 
 
